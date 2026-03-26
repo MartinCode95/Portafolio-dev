@@ -138,7 +138,7 @@ export default function Education() {
 
   return (
     <section
-      id="education"
+      id="educacion"
       ref={sectionRef}
       className="py-16 md:py-24 px-4 sm:px-6"
     >

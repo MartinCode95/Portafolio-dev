@@ -219,8 +219,8 @@ function NavButton({ direction, onClick, disabled }: NavButtonProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        width: 40,
-        height: 40,
+        width: 44,
+        height: 44,
         borderRadius: '50%',
         background: '#18181B',
         border: `1px solid ${hovered && !disabled ? 'rgba(163, 230, 53, 0.6)' : '#3F3F46'}`,
@@ -268,17 +268,27 @@ function Dots({ count, active, onSelect }: DotsProps) {
           aria-selected={i === active}
           aria-label={`Ir al proyecto ${i + 1}`}
           onClick={() => onSelect(i)}
+          className="inline-flex items-center justify-center"
           style={{
-            width: i === active ? 20 : 8,
-            height: 8,
-            borderRadius: 4,
-            background: i === active ? '#A3E635' : '#3F3F46',
+            minWidth: 44,
+            minHeight: 44,
+            background: 'none',
             border: 'none',
             padding: 0,
             cursor: 'pointer',
-            transition: 'width 300ms ease, background 300ms ease',
           }}
-        />
+        >
+          <span
+            style={{
+              display: 'block',
+              width: i === active ? 20 : 8,
+              height: 8,
+              borderRadius: 4,
+              background: i === active ? '#A3E635' : '#3F3F46',
+              transition: 'width 300ms ease, background 300ms ease',
+            }}
+          />
+        </button>
       ))}
     </div>
   )
@@ -402,7 +412,7 @@ export default function Projects() {
 
   return (
     <section
-      id="projects"
+      id="proyectos"
       ref={sectionRef}
       className="py-16 md:py-24 px-4 sm:px-6"
     >

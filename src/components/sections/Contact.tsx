@@ -37,7 +37,7 @@ export default function Contact() {
 
   return (
     <section
-      id="contact"
+      id="contacto"
       ref={sectionRef}
       className="py-16 md:py-24 px-4 sm:px-6"
     >

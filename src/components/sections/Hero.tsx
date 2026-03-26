@@ -48,17 +48,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6">
       <GeometricBackground />
-      <style>{`
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-        .cursor-blink {
-          animation: blink 1s step-end infinite;
-        }
-      `}</style>
-
-      <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
+<div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
 
         {/* Texto */}
         <div className="flex-1 text-center md:text-left">
@@ -79,6 +69,18 @@ export default function Hero() {
             Combino React, TypeScript y herramientas de IA con expertise en sistemas empresariales SAP.
             En formación continua, construyendo soluciones que escalan.
           </p>
+
+          <span
+            className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-full mt-6"
+            style={{
+              background: 'rgba(163, 230, 53, 0.1)',
+              border: '1px solid rgba(163, 230, 53, 0.3)',
+              color: '#A3E635',
+            }}
+          >
+            <span className="w-2 h-2 rounded-full bg-[#A3E635] animate-pulse" />
+            Disponible · Mar 2026
+          </span>
 
           <div className="flex gap-3 mt-8 flex-wrap justify-center md:justify-start">
             <a

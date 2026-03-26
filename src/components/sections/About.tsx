@@ -37,7 +37,7 @@ export default function About() {
 
   return (
     <section
-      id="about"
+      id="sobre-mi"
       ref={sectionRef}
       className="py-16 md:py-24 px-4 sm:px-6"
     >
