@@ -62,12 +62,12 @@ export default function Hero() {
           </h1>
 
           <p className="text-base sm:text-xl text-[#A1A1AA] mt-2">
-            Desarrollo web moderno + ecosistema SAP
+            Desarrollo web moderno · AI-driven
           </p>
 
           <p className="text-sm text-[#A1A1AA] mt-4 max-w-2xl">
-            Combino React, TypeScript y herramientas de IA con expertise en sistemas empresariales SAP.
-            En formación continua, construyendo soluciones que escalan.
+            Construyo productos web con React y TypeScript, usando IA como capa de arquitectura y revisión.
+            Metodología SDD: especificación antes que código, calidad garantizada antes de cada commit.
           </p>
 
           <span

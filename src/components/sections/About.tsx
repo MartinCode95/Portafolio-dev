@@ -63,10 +63,9 @@ export default function About() {
             </p>
 
             <p className="text-[#A1A1AA] leading-relaxed mb-6">
-              Lo que me diferencia es la dualidad: puedo diseñar interfaces modernas con React y TypeScript
-              y al mismo tiempo entender la lógica de negocio que corre en sistemas SAP. Eso me pone en
-              un lugar que pocos developers ocupan — el puente entre el stack moderno y la realidad
-              empresarial.
+              Lo que me diferencia es el proceso: cada componente que construyo fue especificado antes
+              de ser codificado, revisado por un agente antes de commiteado, y pensado para escalar.
+              No "vibe coding" — desarrollo con intención, reglas explícitas y trazabilidad completa.
             </p>
 
             {/* Location + role pill */}
@@ -95,18 +94,7 @@ export default function About() {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="p-5 rounded-lg"
-                style={{
-                  background: '#18181B',
-                  border: '1px solid #3F3F46',
-                  transition: 'border-color 200ms',
-                }}
-                onMouseEnter={e => {
-                  ;(e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(163, 230, 53, 0.4)'
-                }}
-                onMouseLeave={e => {
-                  ;(e.currentTarget as HTMLDivElement).style.borderColor = '#3F3F46'
-                }}
+                className="p-5 rounded-lg bg-[#18181B] border border-[#3F3F46] hover:border-[rgba(163,230,53,0.4)] transition-colors duration-200"
               >
                 <span className="text-3xl font-bold text-[#A3E635]">
                   {stat.value}
@@ -124,13 +112,13 @@ export default function About() {
               }}
             >
               <p className="text-xs font-mono text-[#A3E635] mb-1 uppercase tracking-wider">
-                Perfil dual
+                AI-driven dev
               </p>
               <p className="text-sm text-[#FAFAFA] font-medium">
-                Web moderno + SAP
+                SDD · Claude Code · GGA
               </p>
               <p className="text-xs text-[#A1A1AA] mt-1">
-                React, TypeScript, IA — y sistemas empresariales
+                Spec primero, calidad antes del commit
               </p>
             </div>
           </div>

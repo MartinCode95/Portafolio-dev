@@ -1,6 +1,6 @@
 # Portafolio — Martín García
 
-Portfolio de desarrollador frontend con stack moderno + expertise SAP, construido con metodología SDD (Spec-Driven Development).
+Portfolio de desarrollador frontend con stack moderno e integración nativa de IA. Construido con metodología SDD (Spec-Driven Development) — especificación antes que código, revisión automática antes de cada commit.
 
 <!-- TODO: add Vercel URL after deploy -->
 

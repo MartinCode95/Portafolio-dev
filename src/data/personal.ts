@@ -8,5 +8,5 @@ export const personal: Personal = {
   linkedin: 'https://linkedin.com/in/martin-garcia-0215g',
   github: 'https://github.com/Martin-g95',
   phone: '1162870315',
-  bio: 'Desarrollador Frontend en formación con un perfil dual: desarrollo web moderno con React y TypeScript, y expertise en sistemas empresariales SAP. Apasionado por las herramientas de IA y el ecosistema Claude Code.',
+  bio: 'Desarrollador Frontend enfocado en construir productos de alta calidad con React, TypeScript y metodología SDD. Uso herramientas de IA como parte nativa de mi flujo — no para escribir código más rápido, sino para especificar mejor, revisar más y entregar más.',
 }
