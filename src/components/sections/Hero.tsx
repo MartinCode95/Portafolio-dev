@@ -53,7 +53,7 @@ export default function Hero() {
         {/* Texto */}
         <div className="flex-1 text-center md:text-left">
           <p className="text-sm font-mono text-[#A3E635] mb-4">
-            {'< Desarrollador Frontend />'}
+            {'< Fullstack Developer · AI-driven />'}
             <span className="cursor-blink ml-0.5">_</span>
           </p>
 
@@ -62,12 +62,12 @@ export default function Hero() {
           </h1>
 
           <p className="text-base sm:text-xl text-[#A1A1AA] mt-2">
-            Desarrollo web moderno · AI-driven
+            Fullstack · AI-driven
           </p>
 
           <p className="text-sm text-[#A1A1AA] mt-4 max-w-2xl">
-            Construyo productos web con React y TypeScript, usando IA como capa de arquitectura y revisión.
-            Metodología SDD: especificación antes que código, calidad garantizada antes de cada commit.
+            Construyo productos web con React y TypeScript, con las herramientas más actuales del ecosistema
+            — y cuando no existen, las construyo. Proceso primero, calidad antes de cada entrega.
           </p>
 
           <span

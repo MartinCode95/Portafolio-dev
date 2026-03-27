@@ -63,9 +63,9 @@ export default function About() {
             </p>
 
             <p className="text-[#A1A1AA] leading-relaxed mb-6">
-              Lo que me diferencia es el proceso: cada componente que construyo fue especificado antes
-              de ser codificado, revisado por un agente antes de commiteado, y pensado para escalar.
-              No "vibe coding" — desarrollo con intención, reglas explícitas y trazabilidad completa.
+              Cada proyecto que entrego tiene especificación documentada, reglas explícitas y revisión
+              antes del commit. No importa el tamaño del producto ni quién esté detrás — el método es
+              el mismo. Y ese método es lo que garantiza predecibilidad en cada entrega.
             </p>
 
             {/* Location + role pill */}

@@ -1,37 +1,43 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
-interface TerminalLine {
-  type: 'prompt' | 'output' | 'success' | 'blank'
-  text: string
-}
-
-interface PipelineStep {
+interface Step {
   number: string
-  label: string
+  emoji: string
+  title: string
   description: string
 }
 
-const terminalLines: TerminalLine[] = [
-  { type: 'prompt',  text: 'gga init --provider=claude' },
-  { type: 'success', text: '✓ Provider: claude (claude-sonnet-4-6)' },
-  { type: 'success', text: '✓ Rules loaded: AGENTS.md' },
-  { type: 'success', text: '✓ File patterns: *.ts, *.tsx' },
-  { type: 'blank',   text: '' },
-  { type: 'prompt',  text: 'git commit -m "feat: add Methodology section"' },
-  { type: 'output',  text: '  Reviewing 3 changed files...' },
-  { type: 'output',  text: '  gga-review: checking spec compliance...' },
-  { type: 'success', text: '✓ No var usage detected' },
-  { type: 'success', text: '✓ All components use named exports' },
-  { type: 'success', text: '✓ Tap targets ≥ 44px' },
-  { type: 'success', text: '✅ Review passed — commit accepted' },
-]
-
-const steps: PipelineStep[] = [
-  { number: '01', label: 'SPEC FIRST',      description: 'Antes de escribir código, defino qué debe hacer el sistema y por qué.' },
-  { number: '02', label: 'AGENTS.md',       description: 'Reglas explícitas para los agentes IA. Nadie actúa sin contexto.' },
-  { number: '03', label: 'BUILD con IA',    description: 'Claude Code ejecuta tareas acotadas. Yo dirijo, el agente implementa.' },
-  { number: '04', label: 'REVIEW (GGA)',    description: 'Revisión automática post-commit: cumplimiento de spec, convenciones y calidad.' },
-  { number: '05', label: 'DEPLOY trazable', description: 'Cada cambio tiene historia. SDD garantiza que lo que desplegás es lo que especificaste.' },
+const steps: Step[] = [
+  {
+    number: '01',
+    emoji: '📋',
+    title: 'Defino qué construir',
+    description: 'Antes de abrir el editor, escribo exactamente qué debe hacer cada parte del sistema y por qué.',
+  },
+  {
+    number: '02',
+    emoji: '📐',
+    title: 'Establezco las reglas',
+    description: 'Cada proyecto tiene sus propias reglas documentadas. La IA las conoce antes de generar una sola línea.',
+  },
+  {
+    number: '03',
+    emoji: '🤖',
+    title: 'La IA construye',
+    description: 'El agente implementa dentro del marco que yo definí. No improvisa — ejecuta lo que fue especificado.',
+  },
+  {
+    number: '04',
+    emoji: '✅',
+    title: 'Un agente revisa',
+    description: 'Antes de guardar cualquier cambio, un agente automático verifica que todo cumpla las reglas del proyecto.',
+  },
+  {
+    number: '05',
+    emoji: '🚀',
+    title: 'Deploy sin sorpresas',
+    description: 'Lo que acordamos es lo que se construyó. Cada decisión tiene trazabilidad desde el primer día.',
+  },
 ]
 
 export default function Methodology() {
@@ -58,93 +64,112 @@ export default function Methodology() {
       ref={sectionRef}
       className="py-16 md:py-24 px-4 sm:px-6"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Section label */}
         <p className="text-sm font-mono text-[#A3E635] mb-4">
           {'< Metodología />'}
         </p>
 
-        {/* Section title */}
+        {/* Title */}
         <h2
-          className={`text-3xl md:text-4xl font-bold text-[#FAFAFA] mb-8 md:mb-12 transition-all duration-700 ease-out ${
+          className={`text-3xl md:text-4xl font-bold text-[#FAFAFA] mb-4 transition-all duration-700 ease-out ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          Cómo desarrollo
+          Así nace una feature
         </h2>
 
-        {/* Terminal block */}
-        <div
-          className={`rounded-lg mb-10 overflow-hidden transition-all duration-700 ease-out delay-100 ${
+        {/* Subtitle */}
+        <p
+          className={`text-[#A1A1AA] mb-12 md:mb-16 max-w-xl transition-all duration-700 ease-out delay-100 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
-          style={{ background: '#18181B', border: '1px solid #3F3F46' }}
         >
-          {/* Chrome bar */}
-          <div
-            className="flex items-center gap-1.5 px-4 py-3"
-            style={{ borderBottom: '1px solid #3F3F46' }}
-          >
-            <span className="w-3 h-3 rounded-full" style={{ background: '#EF4444' }} />
-            <span className="w-3 h-3 rounded-full" style={{ background: '#F59E0B' }} />
-            <span className="w-3 h-3 rounded-full" style={{ background: '#22C55E' }} />
-            <span className="ml-3 text-xs font-mono text-[#A1A1AA]">terminal</span>
-          </div>
+          No escribo código para ver qué pasa. Cada feature sigue un proceso
+          definido antes de que la IA genere una sola línea.
+        </p>
 
-          {/* Terminal content */}
-          <pre
-            className="p-4 md:p-6 text-sm font-mono leading-relaxed overflow-x-auto"
-            style={{ background: 'transparent', margin: 0 }}
-          >
-            {terminalLines.map((line, i) => {
-              if (line.type === 'blank') return <br key={i} />
-              if (line.type === 'prompt') return (
-                <div key={i}>
-                  <span style={{ color: '#A3E635' }}>$ </span>
-                  <span style={{ color: '#FAFAFA' }}>{line.text}</span>
+        {/* Steps — Desktop: horizontal row with connectors */}
+        <div className="hidden md:flex items-start mb-12">
+          {steps.map((step, i) => (
+            <Fragment key={step.number}>
+              <div
+                className={`flex-1 flex flex-col items-center text-center transition-all duration-700 ease-out ${
+                  visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+                style={{ transitionDelay: `${200 + i * 120}ms` }}
+              >
+                {/* Emoji circle */}
+                <div
+                  className="flex items-center justify-center rounded-full text-3xl mb-3"
+                  style={{
+                    width: 72,
+                    height: 72,
+                    background: '#18181B',
+                    border: '1px solid rgba(163, 230, 53, 0.35)',
+                    flexShrink: 0,
+                  }}
+                >
+                  {step.emoji}
                 </div>
-              )
-              if (line.type === 'success') return (
-                <div key={i}>
-                  <span style={{ color: '#A3E635' }}>{line.text}</span>
+                <span className="text-xs font-mono text-[#A3E635] mb-1">{step.number}</span>
+                <p className="text-sm font-bold text-[#FAFAFA] mb-2 leading-tight px-2">{step.title}</p>
+                <p className="text-xs text-[#A1A1AA] leading-relaxed px-2">{step.description}</p>
+              </div>
+
+              {/* Connector line — not after last step */}
+              {i < steps.length - 1 && (
+                <div className="flex-shrink-0 flex items-start pt-9" style={{ width: 32 }}>
+                  <div className="w-full h-px" style={{ background: 'rgba(163, 230, 53, 0.35)' }} />
                 </div>
-              )
-              return (
-                <div key={i}>
-                  <span style={{ color: '#A1A1AA' }}>{line.text}</span>
-                </div>
-              )
-            })}
-          </pre>
+              )}
+            </Fragment>
+          ))}
         </div>
 
-        {/* 5-step pipeline */}
-        <div
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 transition-all duration-700 ease-out delay-200 ${
-            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
-        >
-          {steps.map((step) => (
+        {/* Steps — Mobile: vertical column, no connectors */}
+        <div className="md:hidden flex flex-col gap-6 mb-12">
+          {steps.map((step, i) => (
             <div
               key={step.number}
-              className="p-4 rounded-lg flex flex-col gap-2"
-              style={{
-                background: '#18181B',
-                border: '1px solid #3F3F46',
-                transition: 'border-color 200ms',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(163, 230, 53, 0.4)'
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = '#3F3F46'
-              }}
+              className={`flex gap-4 items-start transition-all duration-700 ease-out ${
+                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+              style={{ transitionDelay: `${200 + i * 120}ms` }}
             >
-              <span className="text-xs font-mono" style={{ color: '#A3E635' }}>{step.number}</span>
-              <p className="text-sm font-bold text-[#FAFAFA]">{step.label}</p>
-              <p className="text-xs text-[#A1A1AA] leading-relaxed">{step.description}</p>
+              <div
+                className="flex items-center justify-center rounded-full text-2xl flex-shrink-0"
+                style={{
+                  width: 56,
+                  height: 56,
+                  background: '#18181B',
+                  border: '1px solid rgba(163, 230, 53, 0.35)',
+                }}
+              >
+                {step.emoji}
+              </div>
+              <div className="flex flex-col pt-1">
+                <span className="text-xs font-mono text-[#A3E635] mb-0.5">{step.number}</span>
+                <p className="text-sm font-bold text-[#FAFAFA] mb-1">{step.title}</p>
+                <p className="text-xs text-[#A1A1AA] leading-relaxed">{step.description}</p>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Closing quote */}
+        <div
+          className={`text-center p-6 rounded-lg transition-all duration-700 ease-out delay-700 ${
+            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+          style={{
+            background: 'rgba(163, 230, 53, 0.05)',
+            border: '1px solid rgba(163, 230, 53, 0.2)',
+          }}
+        >
+          <p className="font-mono text-sm text-[#A3E635]">
+            "Cada proyecto tiene su especificación documentada. Lo que acordamos es lo que se construye."
+          </p>
         </div>
       </div>
     </section>

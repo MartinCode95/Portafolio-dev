@@ -6,44 +6,48 @@ interface SkillCardProps {
   category: SkillCategory
   index: number
   visible: boolean
+  secondary?: boolean
 }
 
-function SkillCard({ category, index, visible }: SkillCardProps) {
+function SkillCard({ category, index, visible, secondary = false }: SkillCardProps) {
   const delay = index * 100
+  const borderColor = secondary ? 'rgba(251, 191, 36, 0.3)' : '#3F3F46'
+  const borderHover = secondary ? 'rgba(251, 191, 36, 0.55)' : 'rgba(163, 230, 53, 0.4)'
+  const headerColor = secondary ? '#FBB024' : '#A3E635'
+  const badgeBg = secondary ? 'rgba(251, 191, 36, 0.07)' : 'rgba(163, 230, 53, 0.07)'
+  const badgeBorder = secondary ? 'rgba(251, 191, 36, 0.25)' : 'rgba(163, 230, 53, 0.2)'
 
   return (
     <div
       className="p-6 rounded-lg flex flex-col gap-4"
       style={{
         background: '#18181B',
-        border: '1px solid #3F3F46',
+        border: `1px solid ${borderColor}`,
         transition: `opacity 600ms ease-out ${delay}ms, transform 600ms ease-out ${delay}ms, border-color 200ms`,
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(24px)',
       }}
       onMouseEnter={e => {
-        ;(e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(163, 230, 53, 0.4)'
+        ;(e.currentTarget as HTMLDivElement).style.borderColor = borderHover
         ;(e.currentTarget as HTMLDivElement).style.background = '#27272A'
       }}
       onMouseLeave={e => {
-        ;(e.currentTarget as HTMLDivElement).style.borderColor = '#3F3F46'
+        ;(e.currentTarget as HTMLDivElement).style.borderColor = borderColor
         ;(e.currentTarget as HTMLDivElement).style.background = '#18181B'
       }}
     >
-      {/* Category header */}
-      <h3 className="text-sm font-mono text-[#A3E635] uppercase tracking-wider">
+      <h3 className="text-sm font-mono uppercase tracking-wider" style={{ color: headerColor }}>
         {category.category}
       </h3>
 
-      {/* Skills badges */}
       <div className="flex flex-wrap gap-2">
         {category.skills.map(skill => (
           <span
             key={skill}
             className="text-xs font-mono px-2.5 py-1 rounded"
             style={{
-              background: 'rgba(163, 230, 53, 0.07)',
-              border: '1px solid rgba(163, 230, 53, 0.2)',
+              background: badgeBg,
+              border: `1px solid ${badgeBorder}`,
               color: '#FAFAFA',
             }}
           >
@@ -98,9 +102,9 @@ export default function Skills() {
           Stack tecnológico
         </h2>
 
-        {/* Grid de categorías */}
+        {/* Grid — skills principales */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {skills.map((category, index) => (
+          {skills.filter(c => !c.secondary).map((category, index) => (
             <SkillCard
               key={category.category}
               category={category}
@@ -109,6 +113,30 @@ export default function Skills() {
             />
           ))}
         </div>
+
+        {/* Label + grid — skills secundarias */}
+        {skills.some(c => c.secondary) && (
+          <div className="mt-10">
+            <p
+              className={`text-xs font-mono text-[#71717A] uppercase tracking-widest mb-4 transition-all duration-700 ease-out delay-500 ${
+                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              Formándome también en:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {skills.filter(c => c.secondary).map((category, index) => (
+                <SkillCard
+                  key={category.category}
+                  category={category}
+                  index={index}
+                  visible={visible}
+                  secondary
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -3,6 +3,7 @@ import { useState } from 'react'
 const navLinks = [
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Metodología', href: '#metodologia' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Educación', href: '#educacion' },
   { label: 'Contacto', href: '#contacto' },

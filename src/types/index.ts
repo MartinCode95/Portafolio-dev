@@ -12,6 +12,7 @@ export interface Project {
 export interface SkillCategory {
   category: string
   skills: string[]
+  secondary?: boolean
 }
 
 export interface Education {
