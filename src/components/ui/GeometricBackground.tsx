@@ -47,7 +47,7 @@ function drawCircle(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
   ctx.arc(x, y, size, 0, Math.PI * 2)
 }
 
-export default function GeometricBackground() {
+export function GeometricBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const shapesRef = useRef<Shape[]>([])
   const rafRef = useRef<number>(0)
@@ -74,7 +74,7 @@ export default function GeometricBackground() {
       rotation: Math.random() * Math.PI * 2,
       rotationSpeed: (Math.random() - 0.5) * 0.007,
       type: types[Math.floor(Math.random() * types.length)],
-      opacity: Math.random() * 0.12 + 0.08,
+      opacity: Math.random() * 0.06 + 0.04,
     }))
 
     const animate = () => {

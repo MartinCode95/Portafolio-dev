@@ -13,6 +13,7 @@ export const education: Education[] = [
     institution: 'UTN',
     degree: 'Diplomatura en Programación SAP ABAP',
     status: 'in-progress',
+    year: 'Julio 2026',
   },
   {
     id: 'udemy-sap',

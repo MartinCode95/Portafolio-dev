@@ -8,7 +8,7 @@ interface StatCard {
 }
 
 const stats: StatCard[] = [
-  { value: '2+', label: 'Años de formación activa' },
+  { value: '2', label: 'Proyectos entregados a clientes reales' },
   { value: '3', label: 'Proyectos personales en producción' },
   { value: '10+', label: 'Tecnologías en el stack' },
 ]

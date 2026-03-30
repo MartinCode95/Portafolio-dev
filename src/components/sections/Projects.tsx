@@ -91,7 +91,9 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
         transform: visible ? 'translateY(0)' : 'translateY(24px)',
       }}
       onMouseEnter={e => {
-        ;(e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(163, 230, 53, 0.4)'
+        ;(e.currentTarget as HTMLDivElement).style.borderColor = project.wip
+          ? 'rgba(234, 179, 8, 0.4)'
+          : 'rgba(163, 230, 53, 0.4)'
         ;(e.currentTarget as HTMLDivElement).style.background = '#27272A'
       }}
       onMouseLeave={e => {
@@ -105,23 +107,37 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
       {/* Card body */}
       <div className="p-6 flex flex-col gap-4 flex-1">
 
-        {/* Header: title + featured badge */}
+        {/* Header: title + badges */}
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-base font-semibold text-[#FAFAFA] leading-snug">
             {project.title}
           </h3>
-          {project.featured && (
-            <span
-              className="shrink-0 text-xs font-mono px-2.5 py-1 rounded"
-              style={{
-                background: 'rgba(163, 230, 53, 0.1)',
-                border: '1px solid rgba(163, 230, 53, 0.35)',
-                color: '#A3E635',
-              }}
-            >
-              Featured
-            </span>
-          )}
+          <div className="flex shrink-0 gap-2">
+            {project.wip && (
+              <span
+                className="text-xs font-mono px-2.5 py-1 rounded"
+                style={{
+                  background: 'rgba(234, 179, 8, 0.1)',
+                  border: '1px solid rgba(234, 179, 8, 0.35)',
+                  color: '#EAB308',
+                }}
+              >
+                En desarrollo
+              </span>
+            )}
+            {project.featured && (
+              <span
+                className="text-xs font-mono px-2.5 py-1 rounded"
+                style={{
+                  background: 'rgba(163, 230, 53, 0.1)',
+                  border: '1px solid rgba(163, 230, 53, 0.35)',
+                  color: '#A3E635',
+                }}
+              >
+                Featured
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Description */}
@@ -154,20 +170,7 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center text-xs font-mono px-4 py-2 min-h-[44px] rounded transition-colors duration-200"
-                style={{
-                  background: 'transparent',
-                  border: '1px solid #3F3F46',
-                  color: '#A1A1AA',
-                }}
-                onMouseEnter={e => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(163, 230, 53, 0.4)'
-                  ;(e.currentTarget as HTMLAnchorElement).style.color = '#A3E635'
-                }}
-                onMouseLeave={e => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.borderColor = '#3F3F46'
-                  ;(e.currentTarget as HTMLAnchorElement).style.color = '#A1A1AA'
-                }}
+                className="inline-flex items-center justify-center text-xs font-mono px-4 py-2 min-h-[44px] rounded transition-colors duration-200 border border-[#3F3F46] text-[#A1A1AA] bg-transparent hover:border-[rgba(163,230,53,0.4)] hover:text-[#A3E635]"
               >
                 GitHub →
               </a>
@@ -177,18 +180,7 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center text-xs font-mono px-4 py-2 min-h-[44px] rounded transition-colors duration-200"
-                style={{
-                  background: 'rgba(163, 230, 53, 0.1)',
-                  border: '1px solid rgba(163, 230, 53, 0.35)',
-                  color: '#A3E635',
-                }}
-                onMouseEnter={e => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.background = 'rgba(163, 230, 53, 0.18)'
-                }}
-                onMouseLeave={e => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.background = 'rgba(163, 230, 53, 0.1)'
-                }}
+                className="inline-flex items-center justify-center text-xs font-mono px-4 py-2 min-h-[44px] rounded transition-colors duration-200 border border-[rgba(163,230,53,0.35)] text-[#A3E635] bg-[rgba(163,230,53,0.1)] hover:bg-[rgba(163,230,53,0.18)]"
               >
                 Live ↗
               </a>
