@@ -113,7 +113,7 @@ function Avatar() {
       />
       <div className="absolute inset-2 rounded-full overflow-hidden">
         <img
-          src="/martin-garcia.jpg"
+          src={`${import.meta.env.BASE_URL}martin-garcia.jpg`}
           alt="Martín García"
           className="w-full h-full object-cover object-top"
         />

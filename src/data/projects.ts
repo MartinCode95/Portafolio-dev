@@ -8,7 +8,7 @@ export const projects: Project[] = [
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'Brevo API', 'Vercel'],
     githubUrl: 'https://github.com/MartinCode95/Base-IT',
     liveUrl: 'https://base-it-five.vercel.app/',
-    imageUrl: '/BASE-IT.png',
+    imageUrl: `${import.meta.env.BASE_URL}BASE-IT.png`,
     featured: true,
   },
   {
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     description: 'Landing page profesional que desarrollé como producto propio — formulario de contacto con Nodemailer + Brevo API, seguridad con Helmet y Express Rate Limit, deploy full-stack en Vercel + Render. El mismo producto sirvió de base para una venta real a un cliente.',
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'Vercel', 'Render'],
     githubUrl: 'https://github.com/Martin-g95',
-    imageUrl: '/InfraCore.png',
+    imageUrl: `${import.meta.env.BASE_URL}InfraCore.png`,
     featured: true,
   },
   {
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     description: 'Portafolio construido con metodología SDD. Cada componente fue especificado antes de generarse. Revisión automática con GGA (Claude como provider).',
     stack: ['React 19', 'TypeScript', 'Vite 8', 'Tailwind CSS v4', 'Claude Code', 'GGA'],
     githubUrl: 'https://github.com/MartinCode95/Portafolio-dev',
-    imageUrl: '/PortaFolio.png',
+    imageUrl: `${import.meta.env.BASE_URL}PortaFolio.png`,
     featured: true,
   },
   {
