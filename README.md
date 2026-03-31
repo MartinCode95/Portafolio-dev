@@ -1,62 +1,71 @@
-# Portafolio — Martín García
+<div align="center">
 
-Portfolio de desarrollador frontend con stack moderno e integración nativa de IA. Construido con metodología SDD (Spec-Driven Development) — especificación antes que código, revisión automática antes de cada commit.
+# Martín García — Portfolio
 
-<!-- TODO: add Vercel URL after deploy -->
+**Fullstack Developer · AI-driven**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-martincode95.github.io-A3E635?style=for-the-badge&logo=github&logoColor=black)](https://martincode95.github.io/MartinCode95-Portfolio/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+
+</div>
+
+---
+
+## Sobre el proyecto
+
+Portfolio personal construido con stack moderno e integración nativa de IA. Cada entrega pasa por revisión automática antes del commit — sin excepciones.
+
+El flujo detrás del código:
+
+- **Spec-Driven Development** — se especifica antes de codificar
+- **Claude Code** como agente de implementación dentro de reglas explícitas
+- **GGA (Gentleman Guardian Angel)** como reviewer pre-commit automático
+- **GitHub Actions** para CI/CD a GitHub Pages
 
 ---
 
 ## Stack
 
-| Tecnología       | Versión  |
-| ---------------- | -------- |
-| React            | 19       |
-| TypeScript       | 5        |
-| Vite             | 8        |
-| Tailwind CSS     | v4       |
-| Claude Code      | —        |
-| GGA              | —        |
-| MCP Servers      | —        |
-| Vercel           | —        |
+| Capa | Tecnología |
+|------|-----------|
+| UI | React 19 + TypeScript 5 |
+| Estilos | Tailwind CSS v4 |
+| Build | Vite 8 |
+| Deploy | GitHub Pages via GitHub Actions |
+| IA / Workflow | Claude Code + GGA + MCP Servers |
 
 ---
 
-## Metodología SDD
-
-Este proyecto fue construido siguiendo un flujo **Spec-Driven Development**:
-
-1. **SPEC FIRST** — Antes de escribir código, se define qué debe hacer el sistema y por qué (Given/When/Then).
-2. **AGENTS.md** — Reglas explícitas para los agentes IA. Ningún agente actúa sin contexto.
-3. **BUILD con IA** — Claude Code ejecuta tareas acotadas. El desarrollador dirige, el agente implementa.
-4. **REVIEW (GGA)** — Revisión automática post-commit: cumplimiento de spec, convenciones y calidad.
-5. **DEPLOY trazable** — Cada cambio tiene historia. SDD garantiza que lo que se despliega es lo que se especificó.
-
----
-
-## Estructura de carpetas
+## Estructura
 
 ```
 src/
 ├── components/
-│   ├── layout/       # Layout, Header, Footer
-│   ├── sections/     # Hero, About, Skills, Methodology, Projects, Education, Contact
-│   └── ui/           # Componentes reutilizables
-├── data/             # projects.ts, personal.ts, education.ts, skills.ts
-└── types/            # Interfaces TypeScript
+│   ├── layout/     # Layout, Header, Footer
+│   ├── sections/   # Hero, About, Skills, Methodology, Projects, Education, Contact
+│   └── ui/         # GeometricBackground y componentes reutilizables
+├── data/           # Datos tipados: projects, skills, education
+└── types/          # Interfaces TypeScript
 ```
 
 ---
 
-## Comandos de desarrollo
+## Desarrollo local
 
 ```bash
-npm install      # Instalar dependencias
-npm run dev      # Servidor de desarrollo (http://localhost:5173)
-npm run build    # Build de producción
+npm install
+npm run dev     # http://localhost:5173
+npm run build   # Build de producción
 ```
 
 ---
 
-## Agentes y reglas
+## Contacto
 
-Las reglas para los agentes IA están definidas en [`AGENTS.md`](./AGENTS.md).
+**Martín García** — Florencio Varela, Buenos Aires
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-martin--garcia--0215g-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/martin-garcia-0215g)
+[![Email](https://img.shields.io/badge/Email-martin.0215garcia@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:martin.0215garcia@gmail.com)
