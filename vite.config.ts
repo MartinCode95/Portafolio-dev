@@ -7,5 +7,5 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
-  base: process.env.GITHUB_ACTIONS ? '/Portafolio-dev/' : '/',
+  base: process.env.GITHUB_ACTIONS ? '/MartinCode95-Portfolio/' : '/',
 })
