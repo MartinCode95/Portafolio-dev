@@ -6,17 +6,21 @@ import Methodology from './components/sections/Methodology'
 import Projects from './components/sections/Projects'
 import Education from './components/sections/Education'
 import Contact from './components/sections/Contact'
+import { GeometricBackground } from './components/ui/GeometricBackground'
 
 export default function App() {
   return (
-    <Layout>
-      <Hero />
-      <About />
-      <Skills />
-      <Methodology />
-      <Projects />
-      <Education />
-      <Contact />
-    </Layout>
+    <>
+      <GeometricBackground />
+      <Layout>
+        <Hero />
+        <Projects />
+        <About />
+        <Skills />
+        <Methodology />
+        <Education />
+        <Contact />
+      </Layout>
+    </>
   )
 }

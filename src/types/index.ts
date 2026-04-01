@@ -27,7 +27,7 @@ export interface Education {
 export interface Personal {
   name: string
   role: string
-  location: string
+  location?: string
   email: string
   linkedin: string
   github: string

@@ -43,9 +43,8 @@ export default function Contact() {
     >
       {/* Top separator — gradient fade */}
       <div
-        className="max-w-4xl mx-auto mb-20"
+        className="max-w-4xl mx-auto mb-20 h-px"
         style={{
-          height: '1px',
           background: 'linear-gradient(to right, transparent, #3F3F46 30%, #3F3F46 70%, transparent)',
         }}
       />
@@ -121,19 +120,6 @@ export default function Contact() {
           </a>
         </div>
 
-        {/* Info adicional — location */}
-        <div
-          className={`flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#A1A1AA] transition-all duration-700 ease-out delay-[400ms] ${
-            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
-        >
-          <span className="flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-            </svg>
-            {personal.location}
-          </span>
-        </div>
       </div>
     </section>
   )

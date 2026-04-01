@@ -21,15 +21,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: 'portafolio',
-    title: 'Portafolio Dev — Este mismo sitio',
-    description: 'Portafolio construido con metodología SDD. Cada componente fue especificado antes de generarse. Revisión automática con GGA (Claude como provider).',
-    stack: ['React 19', 'TypeScript', 'Vite 8', 'Tailwind CSS v4', 'Claude Code', 'GGA'],
-    githubUrl: 'https://github.com/MartinCode95/Portafolio-dev',
-    imageUrl: `${import.meta.env.BASE_URL}PortaFolio.png`,
-    featured: true,
-  },
-  {
     id: 'real-estate',
     title: 'Plataforma Inmobiliaria',
     description: 'Plataforma inmobiliaria full-stack con Next.js y Supabase. Gestión de propiedades, autenticación y base de datos en tiempo real. En desarrollo activo.',

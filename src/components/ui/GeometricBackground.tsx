@@ -59,8 +59,8 @@ export function GeometricBackground() {
     if (!ctx) return
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
     resize()
 
@@ -106,7 +106,7 @@ export function GeometricBackground() {
     animate()
 
     const observer = new ResizeObserver(resize)
-    observer.observe(canvas)
+    observer.observe(document.documentElement)
 
     return () => {
       cancelAnimationFrame(rafRef.current)
@@ -117,7 +117,7 @@ export function GeometricBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="fixed inset-0 w-screen h-screen pointer-events-none z-0"
       aria-hidden="true"
     />
   )
