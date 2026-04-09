@@ -186,7 +186,7 @@ export default function Hero() {
                 GitHub
               </a>
               <a
-                href="/Martin_Gonzalo_Garcia_CV.pdf"
+                href={`${import.meta.env.BASE_URL}Martin_Garcia_CV_FullStack.pdf`}
                 download
                 className="inline-flex items-center justify-center px-6 py-3 min-h-[44px] rounded-md font-semibold text-[#A3E635] transition-colors duration-200 hover:bg-[rgba(163,230,53,0.15)]"
                 style={{ border: '1px solid #A3E635' }}
