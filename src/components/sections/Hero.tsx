@@ -143,7 +143,7 @@ export default function Hero() {
           {/* Texto */}
           <div className="flex-1 text-center md:text-left">
             <p className="text-sm font-mono text-[#A3E635] mb-4">
-              {'< Fullstack Developer · AI-driven />'}
+              {'< Full Stack Developer · AI-driven />'}
               <span className="cursor-blink ml-0.5">_</span>
             </p>
 
@@ -152,7 +152,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-xl text-[#A1A1AA] mt-2">
-              Fullstack · AI-driven
+              Full Stack · AI-driven
             </p>
 
             <p className="text-sm text-[#A1A1AA] mt-4 max-w-2xl">
