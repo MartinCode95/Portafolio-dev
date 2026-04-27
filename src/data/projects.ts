@@ -6,6 +6,7 @@ export const projects: Project[] = [
     title: 'Inmobiliaria Web — Base Comercial Adaptable',
     description: 'Proyecto personal inmobiliario full-stack que desarrollé como base comercial reutilizable y lista para vender. Incluye catálogo de propiedades, búsqueda, panel de gestión y una base técnica preparada para adaptar, revender y desplegar para distintas inmobiliarias o corredores.',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel'],
+    githubUrl: 'https://github.com/MartinCode95/inmobiliaria-web',
     liveUrl: 'https://inmobiliaria-galeano.vercel.app/',
     imageUrl: `${import.meta.env.BASE_URL}real-estate-galeano.png`,
     featured: true,
