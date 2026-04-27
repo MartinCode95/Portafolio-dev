@@ -10,6 +10,18 @@ interface ProjectCardProps {
 interface ProjectPreviewProps {
   title: string
   imageUrl?: string
+  liveUrl?: string
+}
+
+const EXTERNAL_LINK_PROPS = {
+  target: '_blank',
+  rel: 'noopener noreferrer',
+} as const
+
+function stopCarouselPropagation(
+  event: React.PointerEvent<HTMLAnchorElement> | React.MouseEvent<HTMLAnchorElement>,
+) {
+  event.stopPropagation()
 }
 
 function getInitials(title: string): string {
@@ -21,15 +33,38 @@ function getInitials(title: string): string {
     .join('')
 }
 
-function ProjectPreview({ title, imageUrl }: ProjectPreviewProps) {
+function ProjectPreview({ title, imageUrl, liveUrl }: ProjectPreviewProps) {
+  const overlayContent = liveUrl ? (
+    <a
+      href={liveUrl}
+      {...EXTERNAL_LINK_PROPS}
+      className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-[rgba(163,230,53,0.45)] bg-[rgba(24,24,27,0.82)] px-4 py-2 text-xs font-mono text-[#FAFAFA] transition-colors duration-200 hover:border-[rgba(163,230,53,0.7)] hover:text-[#A3E635] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635] focus-visible:ring-offset-2 focus-visible:ring-offset-[#18181B]"
+      aria-label={`Abrir demo en vivo de ${title}`}
+      onPointerDown={stopCarouselPropagation}
+      onClick={stopCarouselPropagation}
+    >
+      Ver proyecto ↗
+    </a>
+  ) : (
+    <span className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-[#3F3F46] bg-[rgba(24,24,27,0.82)] px-4 py-2 text-xs font-mono text-[#D4D4D8]">
+      Sin demo online
+    </span>
+  )
+
   if (imageUrl) {
     return (
-      <div className="w-full overflow-hidden rounded-t-lg" style={{ aspectRatio: '16/9' }}>
+      <div className="relative w-full overflow-hidden rounded-t-lg" style={{ aspectRatio: '16/9' }}>
         <img
           src={imageUrl}
           alt={`Preview de ${title}`}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02] group-hover:blur-[2px] group-focus-within:scale-[1.02] group-focus-within:blur-[2px]"
         />
+        <div className="pointer-events-none absolute inset-0 bg-[rgba(24,24,27,0.18)] opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+          <div className="pointer-events-auto">
+            {overlayContent}
+          </div>
+        </div>
       </div>
     )
   }
@@ -38,24 +73,23 @@ function ProjectPreview({ title, imageUrl }: ProjectPreviewProps) {
 
   return (
     <div
-      className="w-full flex items-center justify-center rounded-t-lg relative overflow-hidden"
+      className="relative w-full overflow-hidden rounded-t-lg"
       style={{
         aspectRatio: '16/9',
         background: 'linear-gradient(135deg, #18181B 0%, #1e1e21 50%, #1a1e18 100%)',
         borderBottom: '1px solid #3F3F46',
       }}
     >
-      {/* Noise texture layer */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 transition duration-300 group-hover:blur-[2px] group-focus-within:blur-[2px]"
         style={{
           backgroundImage:
             'radial-gradient(ellipse at 30% 40%, rgba(163, 230, 53, 0.06) 0%, transparent 60%), radial-gradient(ellipse at 75% 70%, rgba(163, 230, 53, 0.04) 0%, transparent 50%)',
         }}
       />
 
-      {/* Terminal icon SVG */}
-      <div className="relative flex flex-col items-center gap-3 select-none">
+      <div className="relative flex h-full w-full items-center justify-center transition duration-300 group-hover:blur-[2px] group-focus-within:blur-[2px]">
+        <div className="relative flex flex-col items-center gap-3 select-none">
         <svg
           width="32"
           height="32"
@@ -74,6 +108,13 @@ function ProjectPreview({ title, imageUrl }: ProjectPreviewProps) {
         >
           {initials}
         </span>
+        </div>
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-[rgba(24,24,27,0.24)] opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+        <div className="pointer-events-auto">
+          {overlayContent}
+        </div>
       </div>
     </div>
   )
@@ -82,7 +123,7 @@ function ProjectPreview({ title, imageUrl }: ProjectPreviewProps) {
 function ProjectCard({ project, visible }: ProjectCardProps) {
   return (
     <div
-      className="rounded-lg flex flex-col overflow-hidden h-full"
+      className="group rounded-lg flex flex-col overflow-hidden h-full"
       style={{
         background: '#18181B',
         border: '1px solid #3F3F46',
@@ -102,7 +143,7 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
       }}
     >
       {/* Image / Placeholder preview */}
-      <ProjectPreview title={project.title} imageUrl={project.imageUrl} />
+      <ProjectPreview title={project.title} imageUrl={project.imageUrl} liveUrl={project.liveUrl} />
 
       {/* Card body */}
       <div className="p-6 flex flex-col gap-4 flex-1">
@@ -168,9 +209,10 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="inline-flex items-center justify-center text-xs font-mono px-4 py-2 min-h-[44px] rounded transition-colors duration-200 border border-[#3F3F46] text-[#A1A1AA] bg-transparent hover:border-[rgba(163,230,53,0.4)] hover:text-[#A3E635]"
+                onPointerDown={stopCarouselPropagation}
+                onClick={stopCarouselPropagation}
               >
                 GitHub →
               </a>
@@ -178,9 +220,10 @@ function ProjectCard({ project, visible }: ProjectCardProps) {
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="inline-flex items-center justify-center text-xs font-mono px-4 py-2 min-h-[44px] rounded transition-colors duration-200 border border-[rgba(163,230,53,0.35)] text-[#A3E635] bg-[rgba(163,230,53,0.1)] hover:bg-[rgba(163,230,53,0.18)]"
+                onPointerDown={stopCarouselPropagation}
+                onClick={stopCarouselPropagation}
               >
                 Live ↗
               </a>

@@ -2,6 +2,15 @@ import type { Project } from '../types'
 
 export const projects: Project[] = [
   {
+    id: 'real-estate',
+    title: 'Inmobiliaria Web — Base Comercial Adaptable',
+    description: 'Proyecto personal inmobiliario full-stack que desarrollé como base comercial reutilizable y lista para vender. Incluye catálogo de propiedades, búsqueda, panel de gestión y una base técnica preparada para adaptar, revender y desplegar para distintas inmobiliarias o corredores.',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel'],
+    liveUrl: 'https://inmobiliaria-galeano.vercel.app/',
+    imageUrl: `${import.meta.env.BASE_URL}real-estate-galeano.png`,
+    featured: true,
+  },
+  {
     id: 'base-it',
     title: 'Base-IT — Landing Page Corporativa',
     description: 'Primera venta real de mi producto InfraCore, adaptado para una consultora IT argentina especializada en infraestructura y SAP BASIS. Incorporé formulario de doble confirmación por email, sanitización XSS/SQLi, rate limiting y SEO con Schema.org según los requisitos del cliente.',
@@ -19,13 +28,5 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/MartinCode95',
     imageUrl: `${import.meta.env.BASE_URL}InfraCore.png`,
     featured: true,
-  },
-  {
-    id: 'real-estate',
-    title: 'Plataforma Inmobiliaria',
-    description: 'Plataforma inmobiliaria full-stack con Next.js y Supabase. Gestión de propiedades, autenticación y base de datos en tiempo real. En desarrollo activo.',
-    stack: ['Next.js', 'Supabase', 'Tailwind CSS', 'TypeScript', 'Claude Code'],
-    featured: true,
-    wip: true,
   },
 ]
